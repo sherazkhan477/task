@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Don't cd anywhere — run from repo root
+cd "$(dirname "$0")"
 
-# Install backend dependencies (pyproject.toml is at repo root)
-poetry install
+# Install dependencies from requirements.txt
+pip install -r requirements.txt
 
-# Run Django commands from PythonSide
-poetry run python PythonSide/manage.py migrate
+# Apply migrations
+python manage.py migrate
 
-# Optional: collect static
-# poetry run python PythonSide/manage.py collectstatic --noinput
+# (Optional)
+# python manage.py collectstatic --noinput
